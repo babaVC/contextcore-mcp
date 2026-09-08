@@ -8,26 +8,23 @@ Plugin name: **contextcore** (manifest `name`; display name **ContextCore**)
 
 ## Cursor marketplace
 
-**Status:** Submitted **2026-09-03** — awaiting review.
+**Cursor Directory:** **Published** — https://cursor.directory/plugins/contextcore
+
+**Official marketplace** (`cursor.com/marketplace/publish`): Submitted **2026-09-03** — separate queue, no public status page.
 
 | Target | URL | Status |
 |--------|-----|--------|
-| **Official marketplace** | https://cursor.com/marketplace/publish | Submitted 2026-09-03 |
-| **Cursor Directory** | https://cursor.directory/plugins/new | Submitted 2026-09-03 |
+| **Cursor Directory** | https://cursor.directory/plugins/contextcore | **Live** (2026-09-03 submit) |
+| **Official marketplace** | https://cursor.com/marketplace/publish | Submitted 2026-09-03 — awaiting email |
 
-### Pre-submit checklist (Cursor)
+### Install paths (Cursor)
 
-- [x] `.cursor-plugin/plugin.json` — `mcpServers` pinned to `./mcp.json`
-- [x] Skill + command synced from `context-os` via `npm run sync:cursor-plugin`
-- [x] Marketplace logo — `assets/logo-marketplace.svg`
-- [ ] Local test: `~/.cursor/plugins/local/contextcore` → `/contextcore-init`
+The old `cursor://…/plugin/install?repo=` deeplink returns **Unrecognized deep link** in current Cursor builds. Use:
 
-### Deeplinks
-
-| Format | URL |
-|--------|-----|
-| Plugin (repo) | `cursor://anysphere.cursor-deeplink/plugin/install?repo=babaVC%2Fcontextcore-mcp` |
-| MCP only | `cursor://anysphere.cursor-deeplink/mcp/install?name=contextcore&config=…` |
+| Path | URL / action |
+|------|----------------|
+| **OAuth MCP (one-click)** | `cursor://anysphere.cursor-deeplink/mcp/install?name=contextcore&config=…` with `{ type: "http", url: "https://cloud.contextcore.md/mcp" }` — generated in-app on Account / Agents |
+| **Full plugin** | [cursor.directory/plugins/contextcore](https://cursor.directory/plugins/contextcore) — Add to Cursor on MCP + Commands tabs |
 
 If review stalls: **marketplace-publishing@cursor.com**
 
@@ -35,9 +32,18 @@ If review stalls: **marketplace-publishing@cursor.com**
 
 ## Claude Code plugin directory
 
-**Status:** Validation passed 2026-09-08 — submit at [Console form](https://platform.claude.com/plugins/submit) or [claude.ai form](https://claude.ai/admin-settings/directory/submissions/plugins/new) (Team/Enterprise).
+**Status:** Submitted **2026-09-08** via [Console](https://platform.claude.com/plugin-submissions) — **pending review**.
 
 ### Install path (post-listing)
+
+Once approved, users install from the **community** catalog:
+
+```bash
+claude plugin marketplace add anthropics/claude-plugins-community
+claude plugin install contextcore@claude-community
+```
+
+Until listed (~24h after approval), self-hosted marketplace still works:
 
 ```bash
 claude plugin marketplace add babaVC/contextcore-mcp
@@ -76,8 +82,9 @@ MCP config: `.mcp.json` (remote OAuth URL only)
 - [x] `.mcp.json` — OAuth URL, no embedded token
 - [x] Skills + commands synced from `mcpPlaybook.js`
 - [x] `claude plugin validate .` passes (marketplace `source` must be `./` not `.`)
-- [ ] Submit form — **GitHub repo URL only:** `https://github.com/babaVC/contextcore-mcp`
-- [ ] Smoke: plugin install → OAuth → `/contextcore:contextcore-init` or first prompt
+- [x] Submit form — Console **2026-09-08** (`https://github.com/babaVC/contextcore-mcp`)
+- [ ] Approved → appears in `anthropics/claude-plugins-community` catalog
+- [ ] Smoke: community install → OAuth → `/contextcore:contextcore-init` or first prompt
 
 ### Official marketplace (follow-up)
 

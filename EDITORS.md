@@ -15,11 +15,11 @@ This repo serves **four install paths**. Pick the row that matches yours.
 
 ## Cursor — full plugin
 
-**[Add to Cursor](cursor://anysphere.cursor-deeplink/plugin/install?repo=babaVC%2Fcontextcore-mcp)** or the button on [contextcore.md/account](https://contextcore.md/account).
+**[Cursor Directory](https://cursor.directory/plugins/contextcore)** — Add to Cursor on the MCP and Commands tabs (skill + `/contextcore-init`).
 
-Installs remote MCP (OAuth), optional stdio PAT fallback, playbook skill, and `/contextcore-init`.
+**OAuth MCP one-click:** use **Add to Cursor** on [cloud.contextcore.md/account](https://cloud.contextcore.md/account) (MCP deeplink — not the deprecated `plugin/install?repo=` URL).
 
-Marketplace listing submitted 2026-09-03 — awaiting review. Local test: copy this repo to `~/.cursor/plugins/local/contextcore` and reload Cursor.
+Local test: copy this repo to `~/.cursor/plugins/local/contextcore` and reload Cursor.
 
 ## Claude Code — plugin (recommended)
 

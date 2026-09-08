@@ -14,7 +14,7 @@ The agent gets exactly the context *you* can see. Access is enforced server-side
 
 | Editor | Action |
 |--------|--------|
-| **Cursor** | [Add to Cursor](cursor://anysphere.cursor-deeplink/plugin/install?repo=babaVC%2Fcontextcore-mcp) → `/contextcore-init` |
+| **Cursor** | [Cursor Directory](https://cursor.directory/plugins/contextcore) (full plugin) or **Add to Cursor** on [contextcore.md/account](https://cloud.contextcore.md/account) (OAuth MCP deeplink) → `/contextcore-init` |
 | **Claude Code** | `claude plugin marketplace add babaVC/contextcore-mcp` → `claude plugin install contextcore@contextcore-mcp` |
 | **Claude Desktop** | Customize → Connectors → `https://cloud.contextcore.md/mcp` |
 | **Details** | [EDITORS.md](./EDITORS.md) |
@@ -23,8 +23,9 @@ The agent gets exactly the context *you* can see. Access is enforced server-side
 
 This repo is the **ContextCore editor plugin** for Cursor and Claude Code — shared skills, commands, and MCP wiring. Claude Desktop uses **Custom Connectors** (same gateway URL) or the optional **`.mcpb`** in `desktop-extension/`. See [EDITORS.md](./EDITORS.md).
 
-**Cursor marketplace:** submitted 2026-09-03 — awaiting review.  
-**Claude Code directory:** ready to submit — see [SUBMISSION.md](./SUBMISSION.md).
+**Cursor Directory:** [cursor.directory/plugins/contextcore](https://cursor.directory/plugins/contextcore) (live).  
+**Official marketplace:** submitted 2026-09-03 — awaiting review.  
+**Claude Code directory:** submitted 2026-09-08 — pending review. See [SUBMISSION.md](./SUBMISSION.md).
 
 Local Cursor test: clone to `~/.cursor/plugins/local/contextcore` and reload Cursor.
 
