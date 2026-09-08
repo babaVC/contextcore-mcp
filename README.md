@@ -14,7 +14,7 @@ The agent gets exactly the context *you* can see. Access is enforced server-side
 
 | Editor | Action |
 |--------|--------|
-| **Cursor** | [Cursor Directory](https://cursor.directory/plugins/contextcore) (full plugin) or **Add to Cursor** on [contextcore.md/account](https://cloud.contextcore.md/account) (OAuth MCP deeplink) → `/contextcore-init` |
+| **Cursor** | Customize → search **ContextCore** → Install | `/contextcore-init` |
 | **Claude Code** | `claude plugin marketplace add babaVC/contextcore-mcp` → `claude plugin install contextcore@contextcore-mcp` |
 | **Claude Desktop** | Customize → Connectors → `https://cloud.contextcore.md/mcp` |
 | **Details** | [EDITORS.md](./EDITORS.md) |

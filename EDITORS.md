@@ -15,11 +15,21 @@ This repo serves **four install paths**. Pick the row that matches yours.
 
 ## Cursor — full plugin
 
-**[Cursor Directory](https://cursor.directory/plugins/contextcore)** — Add to Cursor on the MCP and Commands tabs (skill + `/contextcore-init`).
+**Customize → search ContextCore → Install.** Enable the **contextcore** MCP (OAuth). Skip **contextcore-stdio** unless you configured a PAT in Plugins → Configure.
 
-**OAuth MCP one-click:** use **Add to Cursor** on [cloud.contextcore.md/account](https://cloud.contextcore.md/account) (MCP deeplink — not the deprecated `plugin/install?repo=` URL).
+OAuth runs on the **first MCP call**, not at install. If MCP times out with no browser login, update the plugin to **v1.0.1+** (fixes an unresolved `${CONTEXTCORE_MCP_URL}` placeholder in older builds) or use Account **Add MCP only**.
 
-Local test: copy this repo to `~/.cursor/plugins/local/contextcore` and reload Cursor.
+**PAT / stdio fallback** — add manually in Customize → MCPs if needed:
+
+```json
+{
+  "command": "npx",
+  "args": ["-y", "contextcore-mcp"],
+  "env": { "CONTEXTCORE_TOKEN": "YOUR_TOKEN" }
+}
+```
+
+Also on [Cursor Directory](https://cursor.directory/plugins/contextcore).
 
 ## Claude Code — plugin (recommended)
 

@@ -1,6 +1,7 @@
 {
   "mcpServers": {
     "contextcore": {
+      "type": "http",
       "url": "https://cloud.contextcore.md/mcp"
     }
   }

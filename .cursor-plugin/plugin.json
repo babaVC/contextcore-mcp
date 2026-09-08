@@ -1,7 +1,7 @@
 {
   "name": "contextcore",
   "displayName": "ContextCore",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Product context for AI agents — MCP gateway, Initialize skill, and /contextcore-init. Browser OAuth; no token to paste.",
   "author": {
     "name": "ContextCore",

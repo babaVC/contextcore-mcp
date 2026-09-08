@@ -23,8 +23,9 @@ The old `cursor://…/plugin/install?repo=` deeplink returns **Unrecognized deep
 
 | Path | URL / action |
 |------|----------------|
-| **OAuth MCP (one-click)** | `cursor://anysphere.cursor-deeplink/mcp/install?name=contextcore&config=…` with `{ type: "http", url: "https://cloud.contextcore.md/mcp" }` — generated in-app on Account / Agents |
-| **Full plugin** | [cursor.directory/plugins/contextcore](https://cursor.directory/plugins/contextcore) — Add to Cursor on MCP + Commands tabs |
+| **Full plugin (recommended)** | Customize → search **ContextCore** → Install → enable **contextcore** MCP (v1.0.1+ hardcodes OAuth URL) |
+| **OAuth MCP only** | `cursor://anysphere.cursor-deeplink/mcp/install?name=contextcore&config=…` — link on Account / Agents |
+| **Discovery** | [cursor.directory/plugins/contextcore](https://cursor.directory/plugins/contextcore) |
 
 If review stalls: **marketplace-publishing@cursor.com**
 
