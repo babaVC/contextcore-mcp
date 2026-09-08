@@ -1,8 +1,8 @@
-# ContextCore for Cursor
+# ContextCore for AI editors
 
-**Official ContextCore plugin for Cursor** — product context over MCP, the ContextCore playbook skill, and the `/contextcore-init` command.
+**Official ContextCore plugin** for **Cursor** and **Claude Code** — product context over MCP, the ContextCore playbook skill, and the init command. **Claude Desktop** uses Custom Connectors or an optional `.mcpb` Extension.
 
-> **Using Claude Code or another editor?** This repo is still for you — but not as a plugin. See **[EDITORS.md](./EDITORS.md)** for Claude Code, stdio clients, and the terminal CLI.
+> **Editor matrix:** [EDITORS.md](./EDITORS.md) — Cursor, Claude Code plugin, Claude Desktop Connectors, `.mcpb`, stdio, CLI.
 
 Give agents **secure access to your ContextCore project context** — vision, audience, scope, tech decisions, rules, skills, risks, and open questions — plus write tools to propose updates.
 
@@ -14,41 +14,40 @@ The agent gets exactly the context *you* can see. Access is enforced server-side
 
 | Editor | Action |
 |--------|--------|
-| **Cursor** | [Add to Cursor](cursor://anysphere.cursor-deeplink/plugin/install?repo=babaVC%2Fcontextcore-mcp) → connect MCP → `/contextcore-init` |
-| **Claude Code** | `claude mcp add --transport http contextcore https://cloud.contextcore.md/mcp` → paste `Set up ContextCore and initialize it.` |
+| **Cursor** | [Add to Cursor](cursor://anysphere.cursor-deeplink/plugin/install?repo=babaVC%2Fcontextcore-mcp) → `/contextcore-init` |
+| **Claude Code** | `claude plugin marketplace add babaVC/contextcore-mcp` → `claude plugin install contextcore@contextcore-mcp` |
+| **Claude Desktop** | Customize → Connectors → `https://cloud.contextcore.md/mcp` |
 | **Details** | [EDITORS.md](./EDITORS.md) |
 
-## Cursor plugin (this repo's primary deliverable)
+## Cursor + Claude Code plugins (this repo)
 
-This repo **is** the ContextCore Cursor plugin — skills, commands, and MCP wiring in one installable bundle. Claude Code and other editors use the **same MCP gateway** but do **not** install the plugin bundle; see [EDITORS.md](./EDITORS.md).
+This repo is the **ContextCore editor plugin** for Cursor and Claude Code — shared skills, commands, and MCP wiring. Claude Desktop uses **Custom Connectors** (same gateway URL) or the optional **`.mcpb`** in `desktop-extension/`. See [EDITORS.md](./EDITORS.md).
 
-**Submitted to Cursor Marketplace and Cursor Directory (2026-09-03) — awaiting review.** See [SUBMISSION.md](./SUBMISSION.md). To test locally before listing goes live:
+**Cursor marketplace:** submitted 2026-09-03 — awaiting review.  
+**Claude Code directory:** ready to submit — see [SUBMISSION.md](./SUBMISSION.md).
 
-1. Clone this repo to `~/.cursor/plugins/local/contextcore` (use `cp -R`, not symlinks — Cursor rejects external symlink targets)
-2. Open **Cursor → Customize → Plugins** and enable the local plugin
-3. Connect the **`contextcore`** MCP server (browser OAuth on first use)
-4. Configure variables if needed (on-prem URLs, or a PAT for the stdio fallback)
-5. Type **`/contextcore-init`** in chat to run the first-run Initialize procedure
+Local Cursor test: clone to `~/.cursor/plugins/local/contextcore` and reload Cursor.
 
-The plugin ships:
+Claude Code test:
 
-| Component | Path | Cursor only? |
-|-----------|------|--------------|
-| Skill | `skills/contextcore/SKILL.md` | Yes — Cursor plugin format |
-| Command | `commands/contextcore-init.md` | Yes — `/contextcore-init` |
-| MCP | `mcp.json` | Remote OAuth works in any editor that supports HTTP MCP |
+```bash
+claude plugin marketplace add babaVC/contextcore-mcp
+claude plugin install contextcore@contextcore-mcp
+```
 
-Trust and security posture: [contextcore.md/trust](https://contextcore.md/trust)
+## Claude Code (plugin or MCP-only)
 
-## Claude Code (MCP only — not the plugin)
+**Plugin (recommended):** see above — bundled skill + `/contextcore:contextcore-init`.
+
+**MCP only:**
 
 ```bash
 claude mcp add --transport http contextcore https://cloud.contextcore.md/mcp
 ```
 
-Browser OAuth on the first MCP call. Then paste **`Set up ContextCore and initialize it.`** in chat — same Initialize procedure as `/contextcore-init`, loaded over MCP via `read_skill` (`contextcore`).
+Browser OAuth on the first MCP call. Paste **`Set up ContextCore and initialize it.`** — same Initialize procedure as `/contextcore-init`.
 
-More: [EDITORS.md § Claude Code](./EDITORS.md#claude-code--mcp-only) · [MCP user guide](https://contextcore.md/docs/mcp)
+More: [EDITORS.md](./EDITORS.md) · [MCP user guide](https://contextcore.md/docs/mcp)
 
 ## MCP servers in the plugin (Cursor)
 

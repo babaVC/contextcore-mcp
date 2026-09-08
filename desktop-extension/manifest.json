@@ -1,0 +1,37 @@
+{
+  "manifest_version": "0.2",
+  "name": "contextcore",
+  "display_name": "ContextCore",
+  "version": "1.0.0",
+  "description": "Product context for AI agents — OAuth bridge to the ContextCore MCP gateway. Read and propose vision, scope, GTM, rules, and risks.",
+  "author": {
+    "name": "ContextCore",
+    "email": "hello@babavc.com",
+    "url": "https://contextcore.md"
+  },
+  "homepage": "https://contextcore.md/docs/mcp",
+  "documentation": "https://contextcore.md/docs/mcp",
+  "support": "https://contextcore.md/docs/mcp",
+  "privacy_policy": "https://contextcore.md/privacy",
+  "icon": "icon.png",
+  "server": {
+    "type": "node",
+    "mcp_config": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@abluva/mcp-remote",
+        "https://cloud.contextcore.md/mcp",
+        "--transport",
+        "http-only"
+      ]
+    }
+  },
+  "tools": [],
+  "compatibility": {
+    "platforms": ["darwin", "win32"],
+    "runtimes": {
+      "node": ">=18.0.0"
+    }
+  }
+}

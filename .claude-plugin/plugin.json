@@ -1,0 +1,24 @@
+{
+  "name": "contextcore",
+  "version": "1.0.0",
+  "description": "Product context for AI agents — MCP gateway, Initialize skill, and /contextcore-init. Browser OAuth; no token to paste.",
+  "author": {
+    "name": "ContextCore",
+    "email": "hello@babavc.com",
+    "url": "https://contextcore.md"
+  },
+  "homepage": "https://contextcore.md/docs/mcp",
+  "repository": "https://github.com/babaVC/contextcore-mcp",
+  "license": "MIT",
+  "keywords": [
+    "contextcore",
+    "mcp",
+    "context",
+    "product",
+    "agents",
+    "documentation"
+  ],
+  "skills": "./skills",
+  "commands": "./commands",
+  "mcpServers": "./.mcp.json"
+}

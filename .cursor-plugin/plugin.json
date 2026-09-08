@@ -11,7 +11,14 @@
   "homepage": "https://contextcore.md/docs/mcp",
   "repository": "https://github.com/babaVC/contextcore-mcp",
   "license": "MIT",
-  "keywords": ["contextcore", "mcp", "context", "product", "agents", "documentation"],
+  "keywords": [
+    "contextcore",
+    "mcp",
+    "context",
+    "product",
+    "agents",
+    "documentation"
+  ],
   "logo": "assets/logo-marketplace.svg",
   "skills": "skills",
   "commands": "commands",
@@ -36,5 +43,6 @@
         "description": "Optional — only needed for the stdio fallback server; the remote server uses browser OAuth"
       }
     }
-  }
+  },
+  "mcpServers": "./mcp.json"
 }
