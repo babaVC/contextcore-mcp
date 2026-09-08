@@ -23,9 +23,12 @@ The old `cursor://…/plugin/install?repo=` deeplink returns **Unrecognized deep
 
 | Path | URL / action |
 |------|----------------|
-| **Full plugin (recommended)** | Customize → search **ContextCore** → Install → enable **contextcore** MCP (v1.0.1+ hardcodes OAuth URL) |
-| **OAuth MCP only** | `cursor://anysphere.cursor-deeplink/mcp/install?name=contextcore&config=…` — link on Account / Agents |
+| **Full plugin (recommended)** | `npx plugins add babaVC/contextcore-mcp --target cursor` or Customize → search **ContextCore** |
+| **OAuth MCP (browser button)** | `https://cursor.com/install-mcp?name=contextcore&config=…` — Account / landing |
+| **OAuth MCP (native deeplink)** | `cursor://anysphere.cursor-deeplink/mcp/install?…` — fallback |
 | **Discovery** | [cursor.directory/plugins/contextcore](https://cursor.directory/plugins/contextcore) |
+
+`plugin/install?repo=` returns **Unrecognized deep link** in current Cursor builds. After official marketplace listing, switch to `plugin/add?id=<catalog-id>`.
 
 If review stalls: **marketplace-publishing@cursor.com**
 
