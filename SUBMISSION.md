@@ -125,9 +125,11 @@ version to a human reviewer.
 > `"babavc/contextcore-mcp"`, which is **not yours**. Held for review.
 
 That repository *is* ours. The directory already holds a claim on it, registered to the
-org that submitted through the Console on 2026-09-08, and from the submitting account it
-reads as a stranger's listing. No repo change can clear this — only withdrawal or
-migration can.
+org that submitted through the Console on 2026-09-08, and it reads as a stranger's listing
+from **both** accounts — verified at `41026c9` from the old account and from
+david@babavc.com, byte-identical results. The claim therefore belongs to neither, so no
+repo change and no choice of submitting account can clear it. Only withdrawal or migration
+by Anthropic can.
 
 **Emailed `directory@anthropic.com` on 2026-10-14** asking them to move or withdraw the
 Console submission, with the listing to belong to the **david@babavc.com** org. Awaiting
@@ -151,7 +153,8 @@ them on the 2026-10-14 re-validation:
   checklist forbids referring to bundled images or fonts that way outside Markdown image
   syntax
 
-Both were sanitised the same day. The pattern will recur: documenting a finding in-bundle
+Both were sanitised the same day and confirmed gone by a re-validation at `41026c9`,
+which returned to the true baseline: 0 blocking, 2 credential findings, 1 name hold. The pattern will recur: documenting a finding in-bundle
 can reproduce the finding. **Do not paste credential-shaped config or bundled asset paths
 into this file.**
 
