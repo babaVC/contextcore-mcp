@@ -104,6 +104,63 @@ Before submitting, confirm on david@babavc.com:
 5. Run the portal's **Validate** on the Source step before submitting — it checks the
    directory rules that `claude plugin validate` does not (README, license, name taken)
 
+### Portal validation + migration request — 2026-10-14
+
+Ran **Validate** in the developer portal against `main @ 22b4df4`. Result: **7 checks,
+0 blocking**, 1 warning, 3 policy holds. A policy hold is not a rejection — it routes the
+version to a human reviewer.
+
+| Check | Result |
+|---|---|
+| Repository fetched · 24 files, 70.7 kB · `plugin.json` valid · 1 skill, 1 command, 1 MCP server (`contextcore`) | Pass |
+| Directory lints · Name and publisher checks | Passed with warnings |
+| **Name may be confused with an existing listing** | **Policy hold** |
+| **Uses a credential from the user's machine** (2 findings) | **Policy hold** |
+| No privacy policy URL | Warning → **fixed**, `privacyPolicyUrl` set (`597fbf6`) |
+| Images and fonts passed without a code check (`assets/logo-marketplace.png`) | Informational, no action |
+
+**The name hold is the September submission, not a coincidence.** Verbatim:
+
+> `"contextcore"` matches the display name "ContextCore" of plugin
+> `"babavc/contextcore-mcp"`, which is **not yours**. Held for review.
+
+That repository *is* ours. The directory already holds a claim on it, registered to the
+org that submitted through the Console on 2026-09-08, and from the submitting account it
+reads as a stranger's listing. No repo change can clear this — only withdrawal or
+migration can.
+
+**Emailed `directory@anthropic.com` on 2026-10-14** asking them to move or withdraw the
+Console submission, with the listing to belong to the **david@babavc.com** org. Awaiting
+reply. Do not click **Submit for review** from any other account while this is open: the
+first org to submit holds the listing permanently, so submitting from the wrong one to
+dodge the collision would settle ownership on the wrong account irreversibly.
+
+**Free diagnostic, still unrun:** from the *old* account, open a submission and press
+**Validate**, then stop. If the name hold disappears, that account's org owns the claim
+and can withdraw it directly. If it persists, the claim sits elsewhere and the email is
+the only path. Validate is read-only; Submit is the one-way door.
+
+### Open: "Uses a credential from the user's machine" (2 findings)
+
+Not yet resolved — the portal's two file paths have not been read off the expanded row.
+The rule: *don't read a credential already set in the user's environment and send it to a
+server, even in a README example; ask through a `userConfig` entry with `sensitive: true`.*
+
+Near-certain culprit is `bin/cli.js:42` — `process.env.CONTEXTCORE_TOKEN`, forwarded to
+the gateway. The other is probably one of the `"env": { "CONTEXTCORE_TOKEN": "YOUR_TOKEN" }`
+examples in `README.md` or `EDITORS.md`.
+
+Three ways out, in rough order of correctness:
+
+1. **Split the npm proxy out of the plugin folder.** The Claude Code bundle never loads
+   `bin/cli.js` — `.claude-plugin/plugin.json` declares only the skill, the command, and
+   the OAuth-only `.mcp.json`. The stdio proxy is cargo from this repo doing double duty as
+   the `contextcore-mcp` npm package. Cleanest, but moves what the npm package builds from
+2. **Declare `userConfig` with `sensitive: true`** in `plugin.json` — the validator's own
+   suggested remedy, though it declares a token the bundle's MCP server never uses
+3. **Accept the hold.** All three holds reach the same reviewer anyway, and a user's own PAT
+   for our own gateway is a defensible pattern
+
 ### Repo cleanup — done 2026-10-14
 
 Checked against the current [pre-submission checklist](https://claude.com/docs/plugins/pre-submission-checklist).
