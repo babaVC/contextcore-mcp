@@ -62,6 +62,28 @@ Name `contextcore` is still **free** in the catalog. Nearest neighbours are unre
 third-party plugins (`context-os` by sravan27, `contextmatic`, `contextstellar`) — no
 blocking collision, though a look-alike reviewer hold is possible.
 
+### Owning account — decided 2026-10-14
+
+Submit from **david@babavc.com**. The first organization to submit a given repository
+folder holds that listing permanently, and the portal refuses a second organization's
+submission of the same one — so this is a one-way door. Matches `plugin.json`
+(`author.name` ContextCore, `hello@babavc.com`); no manifest change needed.
+
+Do **not** submit from the older personal account. Its developer portal
+(`claude.ai/directory/manage`) shows *"Nothing submitted yet"*, confirmed 2026-10-14 —
+expected, because the dead 2026-09-08 entry lives in the **Claude Console**, a separate
+system. That also means there is no portal draft to delete before emailing.
+
+Because david@babavc.com is a different org from the September submitter, the
+*"Already submitted by another organization"* refusal is **likely**, not hypothetical.
+Treat the refusal as the diagnostic rather than hunting for the Console page first.
+
+Before submitting, confirm on david@babavc.com:
+
+- **Plan** is Pro, Max, Team, or Enterprise — Free accounts cannot submit
+- **Role**, if it is a Team/Enterprise workspace — an Owner submits, or a member granted
+  the Directory permission via a custom role under Organization settings → Roles
+
 ### Recovery path
 
 1. Sign in to the **Claude Console** and open its Plugin submissions page
@@ -156,8 +178,8 @@ MCP config: `.mcp.json` (remote OAuth URL only)
 - [x] ~~Submit form — Console 2026-09-08~~ — **dead queue, form no longer supported**
 - [ ] Withdraw / migrate the Console submission (step 1 above)
 - [x] Remove `desktop-extension/`; pin npx; drop lockfile (2026-10-14) — `mcp.json` **kept**, it is the Cursor config
-- [ ] Resubmit plugin bundle at `claude.ai/directory/manage`, Validate before submitting
-- [ ] Submit `cloud.contextcore.md/mcp` as an MCP connector, pair with the bundle
+- [ ] Resubmit plugin bundle at `claude.ai/directory/manage` **as david@babavc.com**, Validate before submitting
+- [ ] Submit `cloud.contextcore.md/mcp` as an MCP connector **from the same account**, pair with the bundle
 - [ ] Approved → appears in `anthropics/claude-plugins-community` catalog
 - [ ] Smoke: community install → OAuth → `/contextcore:contextcore-init` or first prompt
 
