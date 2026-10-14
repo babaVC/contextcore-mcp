@@ -117,7 +117,7 @@ version to a human reviewer.
 | **Name may be confused with an existing listing** | **Policy hold** |
 | **Uses a credential from the user's machine** (2 findings) | **Policy hold** |
 | No privacy policy URL | Warning → **fixed**, `privacyPolicyUrl` set (`597fbf6`) |
-| Images and fonts passed without a code check (`assets/logo-marketplace.png`) | Informational, no action |
+| Images and fonts passed without a code check (the marketplace logo PNG) | Informational, no action |
 
 **The name hold is the September submission, not a coincidence.** Verbatim:
 
@@ -140,15 +140,35 @@ dodge the collision would settle ownership on the wrong account irreversibly.
 and can withdraw it directly. If it persists, the claim sits elsewhere and the email is
 the only path. Validate is read-only; Submit is the one-way door.
 
+### SUBMISSION.md is inside the scanned bundle
+
+The plugin folder is the repo root, so **this file ships to every user who installs the
+plugin and is read by the directory scanner**. Writing findings down here created two of
+them on the 2026-10-14 re-validation:
+
+- a credential finding, from pasting a token environment-variable config into the notes
+- an image hold on this file, from writing a bundled image's path in backticks — the
+  checklist forbids referring to bundled images or fonts that way outside Markdown image
+  syntax
+
+Both were sanitised the same day. The pattern will recur: documenting a finding in-bundle
+can reproduce the finding. **Do not paste credential-shaped config or bundled asset paths
+into this file.**
+
+The durable fix is to move this file out of the repository — internal submission tracking
+has no business in a user-installed bundle, and `.gitattributes` `export-ignore` is not an
+option (the directory stops validation when it sees it). Pending a decision on where it
+lands; `context-os` is the natural home, and `AGENTS.md` there already points at this file.
+
 ### Open: "Uses a credential from the user's machine" (2 findings)
 
 Not yet resolved — the portal's two file paths have not been read off the expanded row.
 The rule: *don't read a credential already set in the user's environment and send it to a
 server, even in a README example; ask through a `userConfig` entry with `sensitive: true`.*
 
-Near-certain culprit is `bin/cli.js:42` — `process.env.CONTEXTCORE_TOKEN`, forwarded to
-the gateway. The other is probably one of the `"env": { "CONTEXTCORE_TOKEN": "YOUR_TOKEN" }`
-examples in `README.md` or `EDITORS.md`.
+Near-certain culprit is the stdio proxy in `bin/`, which reads the ContextCore personal
+access token out of the environment and forwards it to the gateway. The others are the
+matching editor-config examples in `README.md` and `EDITORS.md`.
 
 Three ways out, in rough order of correctness:
 
