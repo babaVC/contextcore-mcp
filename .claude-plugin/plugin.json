@@ -8,6 +8,7 @@
     "url": "https://contextcore.md"
   },
   "homepage": "https://contextcore.md/docs/mcp",
+  "privacyPolicyUrl": "https://contextcore.md/privacy",
   "repository": "https://github.com/babaVC/contextcore-mcp",
   "license": "MIT",
   "keywords": [
