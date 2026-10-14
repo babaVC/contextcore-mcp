@@ -7,7 +7,6 @@ This repo serves **four install paths**. Pick the row that matches yours.
 | **Cursor** | **Plugin** — MCP + skill + `/contextcore-init` | Type `/contextcore-init` | Bundled `skills/contextcore/SKILL.md` |
 | **Claude Code** | **Plugin** — MCP + skill + init (same repo) | `/contextcore:contextcore-init` or paste first prompt | Bundled skill + `read_skill` slug `contextcore` |
 | **Claude Desktop (chat)** | **Custom Connector** — paste MCP URL | Paste first prompt | Over MCP: `read_skill` slug `contextcore` |
-| **Claude Desktop Extensions** | **`.mcpb`** — OAuth bridge (optional) | Paste first prompt | Over MCP: `read_skill` slug `contextcore` |
 | **Other MCP clients** | Remote URL or stdio npm (see README) | Paste first prompt | Over MCP: `read_skill` slug `contextcore` |
 | **Terminal / CI** | [`contextcore-cli`](https://www.npmjs.com/package/contextcore-cli) | `contextcore` commands | N/A |
 
@@ -24,7 +23,7 @@ OAuth runs on the **first MCP call**, not at install. If MCP times out with no b
 ```json
 {
   "command": "npx",
-  "args": ["-y", "contextcore-mcp"],
+  "args": ["-y", "contextcore-mcp@0.1.0"],
   "env": { "CONTEXTCORE_TOKEN": "YOUR_TOKEN" }
 }
 ```
@@ -57,13 +56,11 @@ Submit listing: [Claude plugin directory](https://clau.de/plugin-directory-submi
 
 Syncs across Claude Desktop and claude.ai when signed in.
 
-## Claude Desktop — Extension (.mcpb)
+## Claude Desktop — Extensions
 
-Optional one-click install for Settings → Extensions. OAuth bridge via `@abluva/mcp-remote` — see [desktop-extension/README.md](./desktop-extension/README.md).
-
-Build: `npx @anthropic-ai/mcpb pack desktop-extension dist/contextcore.mcpb`
-
-Primary Desktop path remains **Custom Connectors** (no local bridge process).
+Not a supported path. Anthropic **deprecated desktop-extension (MCPB) listings**, and the
+directory no longer accepts local MCP servers packaged that way. Use **Custom Connectors**
+above — same gateway, no local bridge process.
 
 ## Other editors
 
@@ -79,7 +76,7 @@ Primary Desktop path remains **Custom Connectors** (no local bridge process).
 }
 ```
 
-**Stdio-only clients** — `npx contextcore-mcp` with a PAT from ContextCore **Account → Integrations → Advanced**.
+**Stdio-only clients** — `npx contextcore-mcp@0.1.0` with a PAT from ContextCore **Account → Integrations → Advanced**.
 
 ## Same gateway for everyone
 

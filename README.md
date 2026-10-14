@@ -1,8 +1,8 @@
 # ContextCore for AI editors
 
-**Official ContextCore plugin** for **Cursor** and **Claude Code** — product context over MCP, the ContextCore playbook skill, and the init command. **Claude Desktop** uses Custom Connectors or an optional `.mcpb` Extension.
+**Official ContextCore plugin** for **Cursor** and **Claude Code** — product context over MCP, the ContextCore playbook skill, and the init command. **Claude Desktop** uses Custom Connectors against the same gateway.
 
-> **Editor matrix:** [EDITORS.md](./EDITORS.md) — Cursor, Claude Code plugin, Claude Desktop Connectors, `.mcpb`, stdio, CLI.
+> **Editor matrix:** [EDITORS.md](./EDITORS.md) — Cursor, Claude Code plugin, Claude Desktop Connectors, stdio, CLI.
 
 Give agents **secure access to your ContextCore project context** — vision, audience, scope, tech decisions, rules, skills, risks, and open questions — plus write tools to propose updates.
 
@@ -21,7 +21,7 @@ The agent gets exactly the context *you* can see. Access is enforced server-side
 
 ## Cursor + Claude Code plugins (this repo)
 
-This repo is the **ContextCore editor plugin** for Cursor and Claude Code — shared skills, commands, and MCP wiring. Claude Desktop uses **Custom Connectors** (same gateway URL) or the optional **`.mcpb`** in `desktop-extension/`. See [EDITORS.md](./EDITORS.md).
+This repo is the **ContextCore editor plugin** for Cursor and Claude Code — shared skills, commands, and MCP wiring. Claude Desktop uses **Custom Connectors** against the same gateway URL. See [EDITORS.md](./EDITORS.md).
 
 **Cursor Directory:** [cursor.directory/plugins/contextcore](https://cursor.directory/plugins/contextcore) (live).  
 **Official marketplace:** submitted 2026-09-03 — awaiting review.  
@@ -54,7 +54,7 @@ More: [EDITORS.md](./EDITORS.md) · [MCP user guide](https://contextcore.md/docs
 
 **Primary — `contextcore` (remote / OAuth).** No token to paste. The first request opens browser sign-in and consent. Configure **`CONTEXTCORE_MCP_URL`** (default `https://cloud.contextcore.md/mcp`).
 
-**Fallback — `contextcore-stdio`.** For headless setups or when you prefer a Personal Access Token. Set **`CONTEXTCORE_TOKEN`** and optionally **`CONTEXTCORE_API_URL`**. Uses this repo's npm package via `npx`.
+**Fallback — `contextcore-stdio`.** For headless setups or when you prefer a Personal Access Token. Set **`CONTEXTCORE_TOKEN`** and optionally **`CONTEXTCORE_API_URL`**. Uses this repo's npm package via `npx`, pinned to an exact version.
 
 If you only use OAuth, leave **`CONTEXTCORE_TOKEN`** unset and **disable** the `contextcore-stdio` server in Cursor MCP settings — otherwise it shows as failed until a token is configured.
 
@@ -96,7 +96,7 @@ The **`contextcore-mcp`** npm package (`bin/cli.js` in this repo) is a JSON-RPC 
   "mcpServers": {
     "contextcore": {
       "command": "npx",
-      "args": ["-y", "contextcore-mcp"],
+      "args": ["-y", "contextcore-mcp@0.1.0"],
       "env": { "CONTEXTCORE_TOKEN": "YOUR_TOKEN" }
     }
   }

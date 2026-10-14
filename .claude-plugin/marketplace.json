@@ -5,8 +5,7 @@
     "url": "https://contextcore.md"
   },
   "metadata": {
-    "description": "ContextCore plugins — product context for AI agents over MCP.",
-    "repository": "https://github.com/babaVC/contextcore-mcp"
+    "description": "ContextCore plugins — product context for AI agents over MCP."
   },
   "plugins": [
     {
